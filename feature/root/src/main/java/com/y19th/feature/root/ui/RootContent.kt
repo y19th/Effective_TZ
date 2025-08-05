@@ -17,6 +17,7 @@ internal fun RootContent(
                 when (instance) {
                     is RootComponent.Child.Authenticate -> instance.screen
                     is RootComponent.Child.Home -> instance.screen
+                    is RootComponent.Child.None -> instance.screen
                 }
             )
         }

@@ -1,5 +1,4 @@
 plugins {
-    alias(libs.plugins.kotlin.android)
     id("android-setup")
     id("compose-setup")
 }
@@ -10,6 +9,10 @@ dependencies {
     implementation(projects.core.util)
     implementation(projects.core.ui)
     implementation(projects.core.navigation)
+    implementation(projects.core.local)
+    implementation(projects.core.domain)
+
 
     implementation(projects.feature.authenticate)
+    implementation(projects.feature.home)
 }

@@ -40,7 +40,11 @@ include(
     ":core:ui",
     ":core:util",
     ":core:navigation",
+    ":core:local",
+    ":core:domain",
+    ":core:resources",
     ":feature",
     ":feature:root",
+    ":feature:home",
     ":feature:authenticate",
 )

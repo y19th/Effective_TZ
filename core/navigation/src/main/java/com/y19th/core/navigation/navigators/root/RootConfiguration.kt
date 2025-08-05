@@ -10,4 +10,7 @@ sealed class RootConfiguration {
 
     @Serializable
     data object Home : RootConfiguration()
+
+    @Serializable
+    data object None : RootConfiguration()
 }

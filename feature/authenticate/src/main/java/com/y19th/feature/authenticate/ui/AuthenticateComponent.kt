@@ -5,16 +5,24 @@ import android.content.Intent
 import android.util.Patterns
 import androidx.core.net.toUri
 import com.arkivanov.decompose.ComponentContext
+import com.y19th.core.domain.interactors.transition.TransitionInteractor
+import com.y19th.core.navigation.navigators.root.RootConfiguration
+import com.y19th.core.navigation.navigators.root.RootNavigator
+import com.y19th.core.resources.models.Stage
 import com.y19th.core.util.di.DependencyCollector
 import com.y19th.core.util.extension.activity
 import com.y19th.dextension.core.ScreenComponent
+import com.y19th.dextension.extensions.coroutine.onLimitedDefault
+import com.y19th.dextension.extensions.coroutine.withMain
 import com.y19th.feature.authenticate.logic.AuthenticateEvents
 import com.y19th.feature.authenticate.logic.AuthenticateState
 import org.koin.core.component.get
 
 
 internal class AuthenticateComponent(
-    componentContext: ComponentContext
+    componentContext: ComponentContext,
+    private val transitionInteractor: TransitionInteractor,
+    private val navigator: RootNavigator
 ) : ScreenComponent<AuthenticateState, AuthenticateEvents>(
     componentContext = componentContext,
     initialState = AuthenticateState()
@@ -50,7 +58,10 @@ internal class AuthenticateComponent(
             }
 
             AuthenticateEvents.OnValidateAuthenticate -> {
-
+                scope.onLimitedDefault {
+                    transitionInteractor.update(Stage.Authorized)
+                    withMain { navigator.handleConfiguration(RootConfiguration.Home) }
+                }
             }
 
             AuthenticateEvents.OnOkClicked -> {

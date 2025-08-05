@@ -18,7 +18,6 @@ class MainActivity : ComponentActivity(), KoinComponent {
         enableEdgeToEdge()
         getKoin().declare<Context>(this)
 
-
         val root = retainedComponent {
             get<RootScreen> { parametersOf(it) }
         }
