@@ -18,6 +18,10 @@ import com.y19th.feature.root.ui.RootComponent.Child.Authenticate
 import com.y19th.feature.root.ui.RootComponent.Child.Home
 import com.y19th.feature.root.ui.RootComponent.Child.None
 
+/*
+* None конфигурация выступает заместо сплеша
+*
+* */
 internal class RootComponent(
     componentContext: ComponentContext,
     navigator: RootNavigator,
