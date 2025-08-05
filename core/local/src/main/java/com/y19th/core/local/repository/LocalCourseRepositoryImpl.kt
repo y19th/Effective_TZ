@@ -6,18 +6,28 @@ import com.y19th.core.local.dao.CourseDao
 import com.y19th.core.local.mapper.toCourse
 import com.y19th.core.local.mapper.toCourseEntity
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 internal class LocalCourseRepositoryImpl(
     private val dao: CourseDao
 ) : LocalCoursesRepository {
+
     override fun flow(): Flow<List<Int>> =
         dao.courseIdsFlow()
+
+    override fun itemsFlow(): Flow<List<Course>> =
+        dao.courseItemsFlow()
+            .map { it.map { item -> item.toCourse() } }
 
     override suspend fun toggleFavourite(item: Course) {
         if (dao.takeAll().find { it.id == item.id } != null)
             dao.deleteItem(item.id)
         else
-            dao.insert(item.toCourseEntity())
+            dao.insert(
+                item
+                    .copy(hasLike = true)
+                    .toCourseEntity()
+            )
     }
 
     override suspend fun takeAll(): List<Course> {

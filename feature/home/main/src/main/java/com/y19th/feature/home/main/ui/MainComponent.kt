@@ -20,7 +20,7 @@ internal class MainComponent(
     initialState = MainState()
 ) {
     init {
-        coursesInteractor.favouriteFlow()
+        coursesInteractor.favouriteIntFlow()
             .onDefaultDispatcher { favourite ->
                 update {
                     copy(

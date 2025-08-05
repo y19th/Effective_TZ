@@ -7,6 +7,8 @@ interface LocalCoursesRepository {
 
     fun flow(): Flow<List<Int>>
 
+    fun itemsFlow(): Flow<List<Course>>
+
     suspend fun toggleFavourite(item: Course)
 
     suspend fun takeAll(): List<Course>

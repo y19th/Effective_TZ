@@ -15,8 +15,13 @@ internal class CoursesInteractorImpl(
     private val localCoursesRepository: LocalCoursesRepository
 ) : CoursesInteractor, BaseInteractor() {
 
-    override fun favouriteFlow(): Flow<ImmutableList<Int>> =
+    override fun favouriteIntFlow(): Flow<ImmutableList<Int>> =
         localCoursesRepository.flow()
+            .map { it.toImmutableList() }
+            .flowOn(context)
+
+    override fun favouriteItemsFlow(): Flow<ImmutableList<Course>> =
+        localCoursesRepository.itemsFlow()
             .map { it.toImmutableList() }
             .flowOn(context)
 

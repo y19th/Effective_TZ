@@ -13,6 +13,9 @@ internal interface CourseDao {
     @Query("select id from course")
     fun courseIdsFlow(): Flow<List<Int>>
 
+    @Query("select * from course")
+    fun courseItemsFlow(): Flow<List<CourseEntity>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(courseEntity: CourseEntity)
 

@@ -117,8 +117,11 @@ fun CoursesItemContent(
                     )
                     .clickable(onClick = onFavouriteIconClick)
                     .padding(all = 6.dp),
-                imageVector = ImageVector.vectorResource(R.drawable.icon_bookmark),
-                //иконки на зеленый нет
+                imageVector =
+                    if (state.value.hasLike)
+                        ImageVector.vectorResource(R.drawable.icon_bookmark_filled)
+                    else
+                        ImageVector.vectorResource(R.drawable.icon_bookmark),
                 tint = if (state.value.hasLike) scheme.green else scheme.onSurface,
                 contentDescription = null
             )

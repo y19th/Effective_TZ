@@ -6,7 +6,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface CoursesInteractor {
 
-    fun favouriteFlow(): Flow<ImmutableList<Int>>
+    fun favouriteIntFlow(): Flow<ImmutableList<Int>>
+
+    fun favouriteItemsFlow(): Flow<ImmutableList<Course>>
 
     suspend fun fetchCourses(): Result<ImmutableList<Course>>
 
