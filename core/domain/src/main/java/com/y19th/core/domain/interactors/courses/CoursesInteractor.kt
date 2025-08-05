@@ -13,4 +13,6 @@ interface CoursesInteractor {
     suspend fun fetchCourses(): Result<ImmutableList<Course>>
 
     suspend fun toggleFavourite(item: Course)
+
+    suspend fun pushFavourite(item: Course)
 }

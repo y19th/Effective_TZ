@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -30,9 +31,11 @@ import com.y19th.core.ui.components.fields.EffectiveTextField
 import com.y19th.core.ui.theme.darkGrey
 import com.y19th.core.ui.theme.green
 import com.y19th.core.ui.theme.scheme
+import com.y19th.dextension.compose.SubscribedEffect
 import com.y19th.dextension.compose.collectAsImmediateState
 import com.y19th.dextension.compose.rememberHandleEvents
 import com.y19th.feature.home.main.R
+import com.y19th.feature.home.main.logic.MainEffects
 import com.y19th.feature.home.main.logic.MainEvents
 import com.y19th.feature.home.main.ui.components.ErrorContent
 import com.y19th.feature.home.main.ui.components.LoadingContent
@@ -44,6 +47,15 @@ internal fun MainContent(
 ) {
     val state = component.state.collectAsImmediateState()
     val handleEvents = component.rememberHandleEvents()
+    val lazyState = rememberLazyListState()
+
+    SubscribedEffect(component) { effect ->
+        when (effect) {
+            MainEffects.OnSorted -> {
+                lazyState.animateScrollToItem(0)
+            }
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -124,6 +136,7 @@ internal fun MainContent(
             else -> {
                 SuccessContent(
                     courses = state.value.courses,
+                    lazyState = lazyState,
                     onEvent = handleEvents
                 )
             }

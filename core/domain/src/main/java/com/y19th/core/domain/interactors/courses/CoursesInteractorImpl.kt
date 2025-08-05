@@ -26,7 +26,17 @@ internal class CoursesInteractorImpl(
             .flowOn(context)
 
     override suspend fun fetchCourses(): Result<ImmutableList<Course>> = changeContext {
-        dataCoursesRepository.fetchCourses().mapCatching { it.toImmutableList() }
+        dataCoursesRepository.fetchCourses()
+            .mapCatching { it.toImmutableList() }
+            .onSuccess { items ->
+                items
+                    .filter { it.hasLike }
+                    .forEach { localCoursesRepository.pushFavourite(it) }
+            }
+    }
+
+    override suspend fun pushFavourite(item: Course) {
+        localCoursesRepository.pushFavourite(item)
     }
 
     override suspend fun toggleFavourite(item: Course) {

@@ -10,5 +10,6 @@ internal data class MainState(
     val favourites: ImmutableList<Int> = persistentListOf(),
 
     val isLoading: Boolean = true,
+    val isReversed: Boolean = false,
     val error: Throwable? = null
 ): BaseState

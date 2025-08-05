@@ -19,6 +19,10 @@ internal class LocalCourseRepositoryImpl(
         dao.courseItemsFlow()
             .map { it.map { item -> item.toCourse() } }
 
+    override suspend fun pushFavourite(item: Course) {
+        dao.insert(item.toCourseEntity())
+    }
+
     override suspend fun toggleFavourite(item: Course) {
         if (dao.takeAll().find { it.id == item.id } != null)
             dao.deleteItem(item.id)
