@@ -14,5 +14,5 @@ dependencies {
 
 
     implementation(projects.feature.authenticate)
-    implementation(projects.feature.home)
+    implementation(projects.feature.home.root)
 }

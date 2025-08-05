@@ -12,7 +12,7 @@ import com.y19th.dextension.extensions.coroutine.withMain
 import com.y19th.dextension.koin.components.KoinNavigationComponent
 import com.y19th.dextension.koin.getScreen
 import com.y19th.feature.authenticate.ui.AuthenticateScreen
-import com.y19th.feature.home.ui.HomeScreen
+import com.y19th.feature.home.root.ui.HomeRootScreen
 import com.y19th.feature.root.ui.RootComponent.Child.Authenticate
 import com.y19th.feature.root.ui.RootComponent.Child.Home
 import com.y19th.feature.root.ui.RootComponent.Child.None
@@ -67,7 +67,7 @@ internal class RootComponent(
     sealed class Child {
         data class Authenticate(val screen: AuthenticateScreen) : Child()
 
-        data class Home(val screen: HomeScreen) : Child()
+        data class Home(val screen: HomeRootScreen) : Child()
 
         data class None(val screen: Screen) : Child()
     }

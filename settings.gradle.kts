@@ -46,5 +46,9 @@ include(
     ":feature",
     ":feature:root",
     ":feature:home",
+    ":feature:home:root",
+    ":feature:home:main",
+    ":feature:home:favourites",
+    ":feature:home:account",
     ":feature:authenticate",
 )
