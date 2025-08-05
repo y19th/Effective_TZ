@@ -38,6 +38,7 @@ include(
     ":app",
     ":core",
     ":core:ui",
+    ":core:data",
     ":core:util",
     ":core:navigation",
     ":core:local",

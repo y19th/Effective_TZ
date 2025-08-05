@@ -1,5 +1,6 @@
 package com.y19th.feature.root.di
 
+import com.y19th.core.data.di.dataModule
 import com.y19th.core.domain.di.domainModule
 import com.y19th.core.local.di.localModule
 import com.y19th.core.navigation.di.navigationModule
@@ -14,7 +15,8 @@ fun initKoin(additionalModules: Module): KoinApplication {
             navigationModule,
             rootModule,
             domainModule,
-            localModule
+            localModule,
+            dataModule
         )
     }
 }

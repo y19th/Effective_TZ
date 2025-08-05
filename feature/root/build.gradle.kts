@@ -11,6 +11,7 @@ dependencies {
     implementation(projects.core.navigation)
     implementation(projects.core.local)
     implementation(projects.core.domain)
+    implementation(projects.core.data)
 
 
     implementation(projects.feature.authenticate)
