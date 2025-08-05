@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
+import com.arkivanov.decompose.extensions.compose.stack.animation.fade
 import com.y19th.core.navigation.navigators.home.HomeConfiguration
 import com.y19th.dextension.compose.DefaultChildren
 import com.y19th.dextension.compose.ProvideContent
@@ -67,6 +68,7 @@ internal fun RootContent(
     ) {
         DefaultChildren(
             modifier = Modifier.padding(it),
+            animator = fade(),
             stack = component.stack
         ) { instance ->
             ProvideContent(
