@@ -8,6 +8,7 @@ import com.y19th.core.navigation.navigators.root.RootNavigator
 import com.y19th.core.resources.models.Stage
 import com.y19th.core.util.extension.EmptyScreen
 import com.y19th.dextension.compose.Screen
+import com.y19th.dextension.extensions.coroutine.onLimitedDefault
 import com.y19th.dextension.extensions.coroutine.withMain
 import com.y19th.dextension.koin.components.KoinNavigationComponent
 import com.y19th.dextension.koin.getScreen
@@ -16,7 +17,6 @@ import com.y19th.feature.home.root.ui.HomeRootScreen
 import com.y19th.feature.root.ui.RootComponent.Child.Authenticate
 import com.y19th.feature.root.ui.RootComponent.Child.Home
 import com.y19th.feature.root.ui.RootComponent.Child.None
-import kotlinx.coroutines.launch
 
 internal class RootComponent(
     componentContext: ComponentContext,
@@ -33,7 +33,7 @@ internal class RootComponent(
     )
 
     init {
-        scope.launch {
+        scope.onLimitedDefault {
             when (transitionInteractor.getStage()) {
                 Stage.Authorized -> {
                     withMain { navigator.handleConfiguration(RootConfiguration.Home) }

@@ -2,9 +2,8 @@ package com.y19th.feature.home.favourites.ui
 
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
-import com.y19th.dextension.koin.getComponent
 import com.y19th.dextension.koin.KoinScreen
-import com.y19th.feature.home.favourites.ui.FavouritesComponent
+import com.y19th.dextension.koin.getComponent
 
 interface FavouritesScreen : KoinScreen
 

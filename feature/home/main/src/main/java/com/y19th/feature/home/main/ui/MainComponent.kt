@@ -34,8 +34,8 @@ internal class MainComponent(
 
     override fun handleEvent(event: MainEvents) {
         when (event) {
-            MainEvents.OnNavigateBack -> {
-                TODO()
+            MainEvents.OnDateFilterClick -> {
+
             }
         }
     }

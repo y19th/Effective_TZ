@@ -1,6 +1,7 @@
 package com.y19th.feature.home.main.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -29,6 +30,7 @@ import com.y19th.core.ui.theme.scheme
 import com.y19th.dextension.compose.collectAsImmediateState
 import com.y19th.dextension.compose.rememberHandleEvents
 import com.y19th.feature.home.main.R
+import com.y19th.feature.home.main.logic.MainEvents
 import com.y19th.feature.home.main.logic.MainState
 import com.y19th.feature.home.main.ui.components.ErrorContent
 import com.y19th.feature.home.main.ui.components.LoadingContent
@@ -74,30 +76,36 @@ internal fun MainContent(
             )
         }
 
-        VerticalSpacer(16.dp)
+        VerticalSpacer(12.dp)
 
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.End
         ) {
-            EffectiveText(
-                text = stringResource(R.string.home_main_screen_filter_date),
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 14.sp,
-                lineHeight = 20.sp,
-                letterSpacing = 0.1.sp,
-                color = scheme.green
-            )
+            Row(
+                modifier = Modifier
+                    .clickable { handleEvents(MainEvents.OnDateFilterClick) }
+                    .padding(vertical = 4.dp)
+            ) {
+                EffectiveText(
+                    text = stringResource(R.string.home_main_screen_filter_date),
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 14.sp,
+                    lineHeight = 20.sp,
+                    letterSpacing = 0.1.sp,
+                    color = scheme.green
+                )
 
-            Icon(
-                imageVector = ImageVector.vectorResource(R.drawable.icon_date_filter),
-                tint = scheme.green,
-                contentDescription = null
-            )
+                Icon(
+                    imageVector = ImageVector.vectorResource(R.drawable.icon_date_filter),
+                    tint = scheme.green,
+                    contentDescription = null
+                )
+            }
         }
 
-        VerticalSpacer(16.dp)
+        VerticalSpacer(12.dp)
 
         when (val innerState = state.value) {
             is MainState.Error -> {
