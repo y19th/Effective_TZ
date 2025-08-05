@@ -14,4 +14,5 @@ dependencies {
     api(libs.bundles.dextension)
     api(libs.androidx.core.ktx)
     api(libs.androidx.activity.compose)
+    api(libs.kotlinx.datetime)
 }

@@ -50,6 +50,7 @@ include(
     ":feature:home:root",
     ":feature:home:main",
     ":feature:home:favourites",
+    ":feature:home:util",
     ":feature:home:account",
     ":feature:authenticate",
 )

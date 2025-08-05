@@ -2,6 +2,7 @@ package com.y19th.core.data.models.courses
 
 import com.y19th.core.data.models.Transformable
 import com.y19th.core.domain.models.courses.Course
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -22,9 +23,9 @@ internal data class CoursesItemResponse(
             text = text,
             price = price,
             rate = rate,
-            startDate = startDate,
+            startDate = LocalDate.parse(startDate),
             hasLike = hasLike,
-            publishDate = publishDate
+            publishDate = LocalDate.parse(publishDate)
         )
     }
 }

@@ -3,14 +3,10 @@ plugins {
     id("compose-setup")
 }
 
-android.namespace = "com.y19th.feature.home.favourites"
+android.namespace = "com.y19th.feature.home.util"
 
 dependencies {
     implementation(projects.core.util)
     implementation(projects.core.ui)
     implementation(projects.core.domain)
-    implementation(projects.core.navigation)
-    implementation(projects.feature.home.util)
-
-    implementation(libs.jetbrains.immutable)
 }

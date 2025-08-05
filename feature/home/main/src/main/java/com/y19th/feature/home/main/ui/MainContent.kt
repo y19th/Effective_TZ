@@ -3,11 +3,15 @@ package com.y19th.feature.home.main.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -19,7 +23,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.composeunstyled.Icon
-import com.y19th.core.ui.components.EffectiveColumn
 import com.y19th.core.ui.components.EffectiveText
 import com.y19th.core.ui.components.HorizontalSpacer
 import com.y19th.core.ui.components.VerticalSpacer
@@ -31,7 +34,6 @@ import com.y19th.dextension.compose.collectAsImmediateState
 import com.y19th.dextension.compose.rememberHandleEvents
 import com.y19th.feature.home.main.R
 import com.y19th.feature.home.main.logic.MainEvents
-import com.y19th.feature.home.main.logic.MainState
 import com.y19th.feature.home.main.ui.components.ErrorContent
 import com.y19th.feature.home.main.ui.components.LoadingContent
 import com.y19th.feature.home.main.ui.components.SuccessContent
@@ -43,9 +45,10 @@ internal fun MainContent(
     val state = component.state.collectAsImmediateState()
     val handleEvents = component.rememberHandleEvents()
 
-    EffectiveColumn(
+    Column(
         modifier = Modifier
             .fillMaxSize()
+            .windowInsetsPadding(WindowInsets.statusBars)
             .padding(horizontal = 16.dp)
     ) {
         Row {
@@ -90,7 +93,7 @@ internal fun MainContent(
             ) {
                 EffectiveText(
                     text = stringResource(R.string.home_main_screen_filter_date),
-                    fontWeight = FontWeight.SemiBold,
+                    fontWeight = FontWeight.Medium,
                     fontSize = 14.sp,
                     lineHeight = 20.sp,
                     letterSpacing = 0.1.sp,
@@ -107,17 +110,22 @@ internal fun MainContent(
 
         VerticalSpacer(12.dp)
 
-        when (val innerState = state.value) {
-            is MainState.Error -> {
-                ErrorContent(innerState)
-            }
-
-            MainState.Loading -> {
+        when {
+            state.value.isLoading -> {
                 LoadingContent()
             }
 
-            is MainState.Success -> {
-                SuccessContent(innerState)
+            state.value.error != null -> {
+                ErrorContent(
+                    throwable = requireNotNull(state.value.error)
+                )
+            }
+
+            else -> {
+                SuccessContent(
+                    courses = state.value.courses,
+                    onEvent = handleEvents
+                )
             }
         }
     }

@@ -7,14 +7,13 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.y19th.core.ui.components.EffectiveText
-import com.y19th.feature.home.main.logic.MainState
 
 @Composable
 internal fun ErrorContent(
-    state: MainState.Error,
+    throwable: Throwable,
     modifier: Modifier = Modifier
 ) {
-    val innerState = rememberUpdatedState(state)
+    val innerState = rememberUpdatedState(throwable)
 
     Box(
         modifier = Modifier
@@ -23,7 +22,7 @@ internal fun ErrorContent(
         contentAlignment = Alignment.Center
     ) {
         EffectiveText(
-            text = "error: ${innerState.value.error.stackTraceToString()}"
+            text = "error: ${innerState.value.stackTraceToString()}"
         )
     }
 }

@@ -24,11 +24,21 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/build-system/convention" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/data" />
+            <option value="$PROJECT_DIR$/core/domain" />
+            <option value="$PROJECT_DIR$/core/local" />
             <option value="$PROJECT_DIR$/core/navigation" />
+            <option value="$PROJECT_DIR$/core/resources" />
             <option value="$PROJECT_DIR$/core/ui" />
             <option value="$PROJECT_DIR$/core/util" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/authenticate" />
+            <option value="$PROJECT_DIR$/feature/home" />
+            <option value="$PROJECT_DIR$/feature/home/account" />
+            <option value="$PROJECT_DIR$/feature/home/favourites" />
+            <option value="$PROJECT_DIR$/feature/home/main" />
+            <option value="$PROJECT_DIR$/feature/home/root" />
+            <option value="$PROJECT_DIR$/feature/home/util" />
             <option value="$PROJECT_DIR$/feature/root" />
           </set>
         </option>

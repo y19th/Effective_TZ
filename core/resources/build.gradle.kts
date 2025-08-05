@@ -7,4 +7,5 @@ android.namespace = "com.y19th.core.resources"
 
 dependencies {
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.datetime)
 }

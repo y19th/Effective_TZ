@@ -17,6 +17,7 @@ koinVersion = "4.1.0"
 immutableCollections = "0.4.0"
 unstyled = "1.39.0"
 retrofit = "3.0.0"
+kotlin-datetime = "0.6.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -63,6 +64,9 @@ unstyled-core = { group = "com.composables", name = "core", version.ref = "unsty
 #Retrofit
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-gson-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+
+#Datetime
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlin-datetime" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
