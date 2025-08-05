@@ -22,8 +22,13 @@ val Surface = Color(0xFF32333A)
 val OnSurface = Color(0xFFF2F2F3)
 
 internal val DefaultGreen = Color(0xFF12B956)
+internal val DefaultDarkGrey = Color(0xFF24252A)
 
 private val greenColorState = mutableStateOf(DefaultGreen)
+private val darkGreyColorState = mutableStateOf(DefaultDarkGrey)
 
 val ColorScheme.green
     get() = greenColorState.value
+
+val ColorScheme.darkGrey
+    get() = darkGreyColorState.value

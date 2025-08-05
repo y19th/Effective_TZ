@@ -25,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
@@ -56,6 +57,9 @@ fun EffectiveTextField(
     leadingIcon: ImageVector? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
+    contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 11.dp),
+    shape: RoundedCornerShape = RoundedCornerShape(30.dp),
+    backgroundColor: Color = scheme.surface,
     onValueChange: (String) -> Unit
 ) {
     val state = rememberUpdatedState(value)
@@ -104,14 +108,14 @@ fun EffectiveTextField(
                     leadingIcon = decoratedLeadingIcon,
                     placeholder = decoratedPlaceholderText,
                     supportingText = decoratedSupportText,
-                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 11.dp),
+                    contentPadding = contentPadding,
                     container = {
                         Box(
                             modifier = Modifier
                                 .fillMaxSize()
                                 .background(
-                                    color = scheme.surface,
-                                    shape = RoundedCornerShape(30.dp)
+                                    color = backgroundColor,
+                                    shape = shape
                                 )
                         )
                     },

@@ -2,9 +2,7 @@ package com.y19th.core.ui.components.fields
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
@@ -32,6 +30,7 @@ internal fun decoratedLeadingIcon(icon: ImageVector?): (@Composable () -> Unit)?
             {
                 Icon(
                     imageVector = icon,
+                    tint = scheme.onSurface,
                     contentDescription = "leading_labelled"
                 )
             }
